@@ -9,6 +9,8 @@ public class TesteEntity {
 		System.out.println(teste.getHp().getLife());
 		teste.setHp(10, 5);
 		System.out.println(teste.getHp().geTotaltLife());
+		teste.getHp().loseHealth(15, 5);
+		System.out.println(teste.getHp().getLife());
 	}
 	
 }
