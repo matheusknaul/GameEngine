@@ -1,6 +1,7 @@
 package com.matheusknaul.GameEngine.components;
 
 public class HealthComponent {
+	
 	private float totalLife;
 	private float life;
 	

@@ -2,7 +2,9 @@ package com.matheusknaul.GameEngine.db.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import com.matheusknaul.GameEngine.core.Entity;
 import com.matheusknaul.GameEngine.db.persistence.Repository;
@@ -26,9 +28,30 @@ public class EntityRepository implements Repository<Entity>{
 		}
 	}
 	
+	public Optional<Entity> findById(int id) {
+		try {
+			String query = "SELECT * FROM entities WHERE id = ?";
+			try (PreparedStatement stmt = connection.prepareStatement(query)){
+				stmt.setInt(1, id);
+				ResultSet rs = stmt.executeQuery();
+				if(rs.next()) {
+					
+				}
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void deleteById(int id) {
 		try {
 			String query = "DELETE FROM entities WHERE id = ?";
+			try(PreparedStatement stmt = connection.prepareStatement(query)){
+				stmt.setInt(1, id);
+				stmt.executeUpdate();
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }
