@@ -1,8 +1,8 @@
 package com.matheusknaul.GameEngine.core;
 
-import com.matheusknaul.GameEngine.annotations.Id;
+import jakarta.persistence.Id;
 
-@com.matheusknaul.GameEngine.annotations.Entity(tableName = "entities")
+@jakarta.persistence.Entity(name = "entities")
 public abstract class Entity {
 	
 	@Id
