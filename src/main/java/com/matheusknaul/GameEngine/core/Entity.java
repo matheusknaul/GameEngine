@@ -1,5 +1,7 @@
 package com.matheusknaul.GameEngine.core;
 
+import java.awt.image.BufferedImage;
+
 import com.matheusknaul.GameEngine.components.HealthComponent;
 
 import jakarta.persistence.Id;
@@ -13,6 +15,9 @@ public abstract class Entity {
 	
 	private HealthComponent hp;
 	
+	public int x, y;
+	public int speed;
+	
 	public Entity() {
 		super();
 	}
@@ -22,6 +27,13 @@ public abstract class Entity {
 		this.name = name;
 		this.hp = new HealthComponent(0);
 	}
+	
+	public BufferedImage front1, front2, front3, left1, left2, left3,
+								right1, right2, right3,
+									back1, back2, back3;
+	
+	public String direction;
+	
 	
 	public Integer getId() {
 		return id;
