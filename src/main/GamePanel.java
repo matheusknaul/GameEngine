@@ -9,10 +9,11 @@ import javax.swing.JPanel;
 
 import entities.Player;
 import input.KeyHandler;
+import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
 
-	final int originalTileSize = 48;
+	final int originalTileSize = 32;
 	final int scale = 3;
 	
 	public final int tileSize = originalTileSize * scale;
@@ -23,13 +24,11 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	int FPS = 60;
 	
+	
+	TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
-	
-	int playerX = 100;
-	int playerY = 100;
-	int playerSpeed = 4;
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -88,6 +87,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		Graphics2D g2 = (Graphics2D) g;
 		
+		tileM.draw(g2);
 		player.draw(g2);
 		
 		g2.dispose();
